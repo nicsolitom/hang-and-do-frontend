@@ -1,13 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap");
+/* font-family: 'Montserrat', sans-serif; */
+
+/* font-family: 'Caveat', cursive; */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  background-color: rgba(0, 160, 165, 0.489);
+  height: 100vh;
+}
+
+nav {
+  width: 100%;
+  position: absolute;
+}
+
+nav > a {
+  color: rgba(0, 0, 0, 0.900)
+}
+
+.navbar-logged-out {
+  text-align: center;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.logo {
+  font-family: "Caveat";
+  margin: 0;
+  font-size: 2.7em;
+}
+
+.logo-punchlines {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  font-size: 0.7em;
+  font-weight: 500;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  padding: 1em 2em;
+  margin: 8px auto;
+  background-color: rgba(0, 0, 0, 0.400);
+  border: 1px solid #000000;
+  border-radius: 4px;
+  color:rgb(255, 255, 255);
+  outline: none;
+  cursor: pointer;
+}
+
+input:focus {
+  background-color: rgba(0, 0, 0, 0.900);
+  border: 1px solid #000000;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: rgba(0, 0, 0, 0.900);
+  border: 1px solid #000000;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.button-dark {
+  background-color: rgba(0, 0, 0, 0.900);
+  border: none;
+  color: #ffffff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.button-dark:hover,
+.button-dark:active {
+  transform: scale(1.05);
+  transition: .5s ease-in-out;
+}
+
+
+.home-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-wrapper > div {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.home-wrapper > form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  text-align: center;
+}
+
+.submit-login-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.submit-login-btn-wrapper > button {
+  margin: .5em;
 }

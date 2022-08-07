@@ -1,9 +1,15 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Routes>
+        <Route path="/" element={<><Navbar /><HomePage /></>} />
+      </Routes>
     </div>
   );
 }
