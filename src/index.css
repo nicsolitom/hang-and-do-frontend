@@ -18,10 +18,13 @@ body {
 nav {
   width: 100%;
   position: absolute;
+  padding-top: 1em;
 }
 
 nav > a {
-  color: rgba(0, 0, 0, 0.900)
+  color: rgba(0, 0, 0, 0.800);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 
 .navbar-logged-out {
@@ -39,6 +42,8 @@ a:visited {
 .footer {
   position: absolute;
   bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
 }
 
 .logo {
@@ -141,4 +146,8 @@ button {
 
 .submit-login-btn-wrapper > button {
   margin: .5em;
+}
+
+.plans-list-page {
+  padding-top: 2em;
 }

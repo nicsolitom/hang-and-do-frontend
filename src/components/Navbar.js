@@ -6,7 +6,7 @@ function Navbar() {
 
         // Logged out navbar:
         <nav className='navbar navbar-logged-out'>
-            <Link to='/'>About</Link>
+            <Link to='/about'>About</Link>
         </nav>
     )
 }
