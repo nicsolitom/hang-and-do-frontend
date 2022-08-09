@@ -5,7 +5,7 @@ import { AuthContext } from '../context/auth.context';
 
 import Footer from '../components/Footer';
 
-const API_URL = 'http://localhost:5005';
+// const API_URL = 'http://localhost:5005';
 
 function HomePage() {
   const [email, setEmail] = useState('');
@@ -27,7 +27,7 @@ function HomePage() {
 
     if (submitValue === 'signup') {
       axios
-        .post(`${API_URL}/api/signup`, requestBody)
+        .post(`${process.env.API_URL}/api/signup`, requestBody)
         .then((response) => {
           console.log('JWT token: ', response.data.authToken);
           console.log(response.data);
@@ -41,7 +41,7 @@ function HomePage() {
     }
 
     if (submitValue === 'login') {
-      axios.post(`${API_URL}/api/login`, requestBody)
+      axios.post(`${process.env.API_URL}/api/login`, requestBody)
       .then((response) => {
           console.log('Logged In! JWT token: ', response.data.authToken);
           storeToken(response.data.authToken);
