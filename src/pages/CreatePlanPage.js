@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
-function CreatePlan(props) {
+function CreatePlanPage(props) {
   const [title, setTitle] = useState("");
   const [dateTime, setDateTime] = useState("");
   const [description, setDescription] = useState("");
@@ -97,4 +97,4 @@ function CreatePlan(props) {
   );
 }
 
-export default CreatePlan;
+export default CreatePlanPage;

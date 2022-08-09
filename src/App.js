@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PlansListPage from './pages/PlansListPage';
 import JoinPlanPage from './pages/JoinPlanPage';
-import CreatePlan from './pages/CreatePlan';
+import CreatePlanPage from './pages/CreatePlanPage';
 import PlanDetailsPage from './pages/PlanDetailsPage';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route path="/plans" element={<><Navbar /><PlansListPage /></>} />
         <Route path="/plans/:planId" element={<><Navbar /><PlanDetailsPage /></>} />
         <Route path="/join-plan" element={<><Navbar /><JoinPlanPage /></>} />
-        <Route path="/create-plan" element={<><Navbar /><CreatePlan /></>} />
+        <Route path="/create-plan" element={<><Navbar /><CreatePlanPage /></>} />
       </Routes>
     </div>
   );
