@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 // import JoinPlanPopup from "../components/JoinPlanPopup";
 // import loadingInfinity from '../images/Infinity-1.4s-211px.gif';
 
-// const API_URL = "http://localhost:5005";
+// const REACT_APP_API_URL = "http://localhost:5005";
 
 function PlanDetailsPage() {
   const [plan, setPlan] = useState(null);
@@ -19,7 +19,7 @@ function PlanDetailsPage() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${process.env.API_URL}/api/plans/${planId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/plans/${planId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

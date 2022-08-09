@@ -7,7 +7,7 @@ import PlanCard from "../components/PlanCard";
 
 // import loadingInfinity from '../images/Infinity-1.4s-211px.gif';
 
-// const API_URL = "http://localhost:5005";
+// const REACT_APP_API_URL = "http://localhost:5005";
 
 function PlansListPage() {
   const [plans, setPlans] = useState(null);
@@ -18,7 +18,7 @@ function PlansListPage() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${process.env.API_URL}/api/plans`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/plans`, {
         headers: { Authorization: `Bearer ${storedToken}` }
       })
       .then((response) => {
