@@ -2,8 +2,6 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
-// const REACT_APP_API_URL = "http://localhost:5005";
-
 function CreatePlan(props) {
   const [title, setTitle] = useState("");
   const [dateTime, setDateTime] = useState("");
@@ -12,18 +10,17 @@ function CreatePlan(props) {
   const [location, setLocation] = useState("");
 
   const { user } = useContext(AuthContext);
-  // console.log("user: ", user._id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = {
       title,
+      dateTime,
       description,
-      img_url: imgUrl,
-      date_time: dateTime,
+      imgUrl,
       location,
-      created_by: user._id
+      createdBy: user._id
     };
 
     const storedToken = localStorage.getItem("authToken");
@@ -59,7 +56,7 @@ function CreatePlan(props) {
         <label>Date:*</label>
         <input
           type='datetime-local'
-          name='date_time'
+          name='dateTime'
           value={dateTime}
           onChange={(e) => setDateTime(e.target.value)}
           // required

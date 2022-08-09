@@ -35,9 +35,17 @@ function PlanDetailsPage() {
 
   return (
     <div className='plan-details-page p-top-4em'>
-      {/* <h1>{plan.title}</h1> */}
-      {/* {img_url && <img src={img_url} alt={title} />} */}
-      {/* <p>{plan.data.description}</p> */}
+
+      {plan ? (
+        <>
+        <h1>{plan.title}</h1>
+        <p>{plan.description}</p>
+       
+        </>
+        ):(
+          <p>Loading plan...</p>
+        )}
+
 
 
     </div>
