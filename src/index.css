@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap");
 /* font-family: 'Montserrat', sans-serif; */
-
 /* font-family: 'Caveat', cursive; */
 
 body {
@@ -10,9 +9,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .App {
   background-color: rgba(0, 160, 165, 0.489);
   height: 100vh;
+}
+
+h3 {
+  margin: 0;
+}
+
+.p-top-4em {
+  padding-top: 4em;
 }
 
 nav {
@@ -37,6 +45,7 @@ a:visited,
 a:hover,
 a:visited {
   text-decoration: none;
+  color:rgb(0, 0, 0)
 }
 
 .footer {
@@ -59,7 +68,8 @@ a:visited {
   font-weight: 500;
 }
 
-input {
+input,
+textarea {
   font-family: "Montserrat", sans-serif;
   display: inline-block;
   box-sizing: border-box;
@@ -75,7 +85,8 @@ input {
   cursor: pointer;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   background-color: rgba(0, 0, 0, 0.900);
   border: 1px solid #000000;
 }
@@ -126,12 +137,20 @@ button {
   align-items: center;
 }
 
+.create-plan-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .home-wrapper > div {
   text-align: center;
   margin-bottom: 2em;
 }
 
-.home-wrapper > form {
+.home-wrapper > form,
+.create-plan-wrapper > form {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -148,6 +167,12 @@ button {
   margin: .5em;
 }
 
-.plans-list-page {
-  padding-top: 2em;
+.join-create-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.join-create-buttons > a {
+  margin: 1em 1em 2em;
 }

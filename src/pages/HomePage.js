@@ -1,15 +1,15 @@
-import axios from "axios";
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from '../context/auth.context'
+import axios from 'axios';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/auth.context';
 
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
 
-const API_URL = "http://localhost:5005";
+const API_URL = 'http://localhost:5005';
 
 function HomePage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [clientMessage, setClientMessage] = useState(undefined);
   const [submitValue, setSubmitValue] = useState(null);
 
@@ -25,11 +25,11 @@ function HomePage() {
 
     const requestBody = { email, password };
 
-    if (submitValue === "signup") {
+    if (submitValue === 'signup') {
       axios
         .post(`${API_URL}/api/signup`, requestBody)
         .then((response) => {
-          console.log("JWT token: ", response.data.authToken);
+          console.log('JWT token: ', response.data.authToken);
           console.log(response.data);
           const signupConfirmation = `Registration successful! Click login`;
           setClientMessage(signupConfirmation);
@@ -40,7 +40,7 @@ function HomePage() {
         });
     }
 
-    if (submitValue === "login") {
+    if (submitValue === 'login') {
       axios.post(`${API_URL}/api/login`, requestBody)
       .then((response) => {
           console.log('Logged In! JWT token: ', response.data.authToken);
@@ -86,7 +86,7 @@ function HomePage() {
             className='button-dark'
             type='submit'
             onClick={() => {
-              setSubmitValue("signup");
+              setSubmitValue('signup');
             }}
           >
             Sign Up
@@ -95,7 +95,7 @@ function HomePage() {
             className='button-dark'
             type='submit'
             onClick={() => {
-              setSubmitValue("login");
+              setSubmitValue('login');
             }}
           >
             Login
