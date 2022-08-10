@@ -7,12 +7,11 @@ body {
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(0, 160, 165, 0.489);
 }
 
-
 .App {
-  background-color: rgba(0, 160, 165, 0.489);
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h3 {
@@ -29,14 +28,23 @@ nav {
   padding-top: 1em;
 }
 
+nav > div {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
 nav > a {
-  color: rgba(0, 0, 0, 0.800);
+  color: rgba(0, 0, 0, 0.8);
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
 }
 
-.navbar-logged-out {
-  text-align: center;
+.navbar {
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* margin: 1em; */
 }
 
 a,
@@ -45,7 +53,7 @@ a:visited,
 a:hover,
 a:visited {
   text-decoration: none;
-  color:rgb(0, 0, 0)
+  color: rgb(0, 0, 0);
 }
 
 .footer {
@@ -77,22 +85,22 @@ textarea {
   max-width: 500px;
   padding: 1em 2em;
   margin: 8px auto;
-  background-color: rgba(0, 0, 0, 0.400);
+  background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid #000000;
   border-radius: 4px;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   outline: none;
   cursor: pointer;
 }
 
 input:focus,
 textarea:focus {
-  background-color: rgba(0, 0, 0, 0.900);
+  background-color: rgba(0, 0, 0, 0.9);
   border: 1px solid #000000;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -100,7 +108,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  background-color: rgba(0, 0, 0, 0.900);
+  background-color: rgba(0, 0, 0, 0.9);
   border: 1px solid #000000;
 }
 
@@ -110,7 +118,7 @@ button {
 }
 
 .button-dark {
-  background-color: rgba(0, 0, 0, 0.900);
+  background-color: rgba(0, 0, 0, 0.9);
   border: none;
   color: #ffffff;
   padding: 15px 32px;
@@ -124,13 +132,12 @@ button {
 .button-dark:hover,
 .button-dark:active {
   transform: scale(1.05);
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
-
 
 .home-wrapper {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,7 +171,7 @@ button {
 }
 
 .submit-login-btn-wrapper > button {
-  margin: .5em;
+  margin: 0.5em;
 }
 
 .join-create-buttons {
@@ -175,4 +182,65 @@ button {
 
 .join-create-buttons > a {
   margin: 1em 1em 2em;
+}
+
+.plans-list-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plans-list {
+  max-width: 80%;
+  border-top: 2px solid #00000043;
+  padding: 1em;
+}
+
+.PlanCard {
+  margin-bottom: 2em;
+  border-bottom: 2px solid #00000043;
+}
+
+.plan-details-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.created-by-wrapper,
+.joined-plan-wrapper {
+  margin-bottom: 1em;
+}
+
+.created-by-wrapper > p,
+.joined-plan-wrapper > p {
+  margin: 0;
+}
+
+.plan-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plan-header > h1 {
+  margin-bottom: 0.2em;
+}
+
+.plan-header > h1,
+.plan-header > p {
+  max-width: 80%;
+}
+
+.plan-date,
+.plan-location {
+  margin: 0.1em;
+}
+
+.plan-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }

@@ -5,17 +5,22 @@ import { AuthContext } from "../context/auth.context";
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
-  if (user) { console.log(user.email) }
+  // if (user) {
+  //   console.log(user.email);
+  // }
   return (
-    // Logged out navbar:
-    <nav className='navbar navbar-logged-out'>
+    <nav className='navbar navbar-logged-in'>
       {isLoggedIn && (
         <>
-          <Link to='/plans'>
-            <button>My Plans</button>
-          </Link>
-          <button onClick={logOutUser}>Logout</button>
-          { user && <span>{user.email}</span>}
+          <div>
+          {user && <span><strong>{user.email} </strong></span>}
+          |
+            <Link to='/plans'><strong> My Plans</strong></Link>
+
+          </div>
+          <div>
+            <Link to='/' onClick={logOutUser}><strong>Logout</strong></Link>
+          </div>
         </>
       )}
     </nav>

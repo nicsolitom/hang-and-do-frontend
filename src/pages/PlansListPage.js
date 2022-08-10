@@ -34,19 +34,21 @@ function PlansListPage() {
   return (
     <div className='plans-list-page p-top-4em'>
       <div className='join-create-buttons'>
-        <Link to={"/join-plan"}>Join plan</Link>
-        <Link to={"/create-plan"}>Create new plan</Link>
+        <Link to={"/join-plan"}><strong>Join plan</strong></Link>
+        <Link to={"/create-plan"}><strong>Create new plan</strong></Link>
       </div>
+      <div className='plans-list'>
 
       {plans ? (
-        plans.map((plan) => <PlanCard key={plan._id} {...plan} />)
-      ) : (
-        <>
+        plans.map((plan) => 
+        <PlanCard key={plan._id} {...plan} />)
+        ) : (
+          <>
           <p>Searching for plans...</p>
         </>
       )}
-
       {/* <JoinPlanPopup /> */}
+      </div>
     </div>
   );
 }
