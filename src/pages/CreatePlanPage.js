@@ -2,7 +2,9 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
-function CreatePlanPage(props) {
+import { useNavigate } from "react-router-dom";
+
+function CreatePlanPage() {
   const [title, setTitle] = useState("");
   const [dateTime, setDateTime] = useState("");
   const [description, setDescription] = useState("");
@@ -10,6 +12,8 @@ function CreatePlanPage(props) {
   const [location, setLocation] = useState("");
 
   const { user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +40,9 @@ function CreatePlanPage(props) {
         setImgUrl("");
         setLocation("");
       })
+      .then(() => {
+        navigate("/plans");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -59,7 +66,7 @@ function CreatePlanPage(props) {
           name='dateTime'
           value={dateTime}
           onChange={(e) => setDateTime(e.target.value)}
-          // required
+          required
         />
 
         <label>Description:*</label>
