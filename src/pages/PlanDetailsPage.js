@@ -1,22 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
-// import { AuthContext } from '../context/auth.context';
-// import PlanCard from "../components/PlanCard";
-// import JoinPlanPopup from "../components/JoinPlanPopup";
-// import loadingInfinity from '../images/Infinity-1.4s-211px.gif';
-
-// const REACT_APP_API_URL = "http://localhost:5005";
+import { useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
+import PostsWall from "../components/PostsWall";
 
 function PlanDetailsPage() {
   const [plan, setPlan] = useState(null);
   const [users, setUsers] = useState(null);
   const [whoCreated, setWhoCreated] = useState(null);
   const [whoJoined, setWhoJoined] = useState(null);
+  const [postText, setPostText] = useState(null);
 
+  const { user } = useContext(AuthContext);
   const { planId } = useParams();
-  // const { _id, title, description, img_url, location, created_by, joined, posts } = plan.data;
+
+  const navigate = useNavigate();
 
   const getPlan = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -60,29 +58,39 @@ function PlanDetailsPage() {
       .catch((error) => console.log(error));
   };
 
-  // const displayCreator = (userId) => {
-  //   const storedToken = localStorage.getItem("authToken");
-  //   console.log("displayUser with id: ", userId);
-  //   // axios
-  //   //   .get(`${process.env.REACT_APP_API_URL}/api/users`, {
-  //   //     headers: { Authorization: `Bearer ${storedToken}` },
-  //   //   })
-  //   //   .then((response) => {
-  //   //     setUsers(response.data);
-  //   //     const userToDislay = response.data.filter((user) => {
-  //   //       return user._id === userId;
-  //   //     });
-  //   //     setWhoCreated(userToDislay[0].email);
+  const handlePostSubmit = (e) => {
+    e.preventDefault();
 
-  //   //   })
-  //   // .catch((error) => {
-  //   //   console.log(error);
-  //   // });
-  // };
+    const requestBody = {
+      postText,
+      planId,
+      createdBy: user._id,
+    }
+    
+    const storedToken = localStorage.getItem("authToken");
 
-  // const displayJoined = (plans) => {
-  //   // console.log(resultArr);
-  // };
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/posts`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setPostText("");
+      })
+      .catch((error) => console.log(error));
+  }
+
+  const deletePlan = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/api/plans/${planId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => {
+        navigate("/plans");
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getPlan();
@@ -137,7 +145,32 @@ function PlanDetailsPage() {
                 </>
               )}
             </div>
+
+
             
+
+
+
+            {/* Note to self: here check if joined or Created. No = join button. Yes = Add posts + PostsWall */}
+            <div className='post-form-wrapper'>
+
+            <form onSubmit={handlePostSubmit}>
+              <label>Add post:</label>
+              <input type='text' name='postText' value={postText} onChange={(e) => setPostText(e.target.value)}/>
+              <button type='submit' className='button-dark'>
+                Submit post
+              </button>
+            </form>
+            </div>
+
+            <PostsWall />
+
+            {whoCreated === user.email && (
+              <button className='button-red' onClick={deletePlan}>Delete Plan</button>
+            )}
+
+
+
           </>
         ) : (
           <p>Loading plan...</p>
