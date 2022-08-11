@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import PostsWall from "../components/PostsWall";
 
@@ -65,8 +65,8 @@ function PlanDetailsPage() {
       postText,
       planId,
       createdBy: user._id,
-    }
-    
+    };
+
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -77,7 +77,28 @@ function PlanDetailsPage() {
         setPostText("");
       })
       .catch((error) => console.log(error));
-  }
+  };
+
+  const joinPlan = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    const requestBody = {
+      userId: user._id,
+    };
+
+    axios
+      .put(
+        `${process.env.REACT_APP_API_URL}/api/plans/${planId}`,
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
+      .then(() => {
+        // window.location.reload();
+      })
+      .catch((error) => console.log(error));
+  };
 
   const deletePlan = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -146,31 +167,39 @@ function PlanDetailsPage() {
               )}
             </div>
 
-
-            
-
-
-
-            {/* Note to self: here check if joined or Created. No = join button. Yes = Add posts + PostsWall */}
-            <div className='post-form-wrapper'>
-
-            <form onSubmit={handlePostSubmit}>
-              <label>Add post:</label>
-              <input type='text' name='postText' value={postText} onChange={(e) => setPostText(e.target.value)}/>
-              <button type='submit' className='button-dark'>
-                Submit post
+            {(whoCreated && whoCreated === user?.email) ||
+            whoJoined?.includes(user?._id) ? (
+              <div className='post-form-wrapper'>
+                <form onSubmit={handlePostSubmit}>
+                  <label>Add post:</label>
+                  <input
+                    type='text'
+                    name='postText'
+                    value={postText}
+                    onChange={(e) => setPostText(e.target.value)}
+                  />
+                  <button type='submit' className='button-dark'>
+                    Submit post
+                  </button>
+                </form>
+                <PostsWall user={user} planId={planId} />
+              </div>
+            ) : (
+              <button className='button-dark' onClick={joinPlan}>
+                Join
               </button>
-            </form>
-            </div>
-
-            <PostsWall />
-
-            {whoCreated === user.email && (
-              <button className='button-red' onClick={deletePlan}>Delete Plan</button>
             )}
 
-
-
+            {whoCreated === user.email && (
+              <>
+                <Link to={`/plans/${planId}/edit`} >
+                  <button className="button-dark">Edit Plan</button>
+                </Link>
+                <button className='button-red' onClick={deletePlan}>
+                  Delete Plan
+                </button>
+              </>
+            )}
           </>
         ) : (
           <p>Loading plan...</p>

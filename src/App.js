@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import EditPlanPage from './pages/EditPlanPage';
 import PlansListPage from './pages/PlansListPage';
 import JoinPlanPage from './pages/JoinPlanPage';
 import CreatePlanPage from './pages/CreatePlanPage';
@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<><Navbar /><HomePage /></>} />
         <Route path="/plans" element={<><Navbar /><PlansListPage /></>} />
         <Route path="/plans/:planId" element={<><Navbar /><PlanDetailsPage /></>} />
+        <Route path="/plans/:planId/edit" element={<><Navbar /><EditPlanPage /></>} />
         <Route path="/join-plan" element={<><Navbar /><JoinPlanPage /></>} />
         <Route path="/create-plan" element={<><Navbar /><CreatePlanPage /></>} />
       </Routes>
