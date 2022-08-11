@@ -5,8 +5,6 @@ import { AuthContext } from '../context/auth.context';
 
 import Footer from '../components/Footer';
 
-// const REACT_APP_API_URL = 'http://localhost:5005';
-
 function HomePage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
