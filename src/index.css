@@ -115,6 +115,7 @@ select:-webkit-autofill:focus {
 button {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  margin: .5em;
 }
 
 .button-dark {
