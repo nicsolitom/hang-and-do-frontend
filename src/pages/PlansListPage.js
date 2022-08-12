@@ -20,7 +20,7 @@ function PlansListPage() {
       })
       .then((response) => {
         const myPlans = response.data.filter((plan) => {
-          return plan.createdBy == user?._id;
+          return plan.createdBy == user?._id || plan.joined.includes(user?._id)
         });
         // console.log(myPlans)
         setPlans(myPlans);
