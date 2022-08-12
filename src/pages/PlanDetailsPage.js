@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import PostsWall from "../components/PostsWall";
@@ -11,7 +11,7 @@ function PlanDetailsPage() {
   const [whoJoined, setWhoJoined] = useState(null);
   const [postText, setPostText] = useState(null);
 
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
   const { planId } = useParams();
 
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ function PlanDetailsPage() {
       })
       .then((response) => {
         setPostText("");
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => console.log(error));
   };
@@ -117,10 +117,12 @@ function PlanDetailsPage() {
 
   useEffect(() => {
     getPlan();
-  }, []);
+  },[]);
 
-  return (
-    <div className='plan-details-wrapper p-top-4em'>
+  if (isLoggedIn) {
+
+    return (
+      <div className='plan-details-wrapper p-top-4em'>
       <div className='plan-header'>
         {plan ? (
           <>
@@ -156,8 +158,8 @@ function PlanDetailsPage() {
                   <p>Joined plan:</p>
                   {whoJoined
                     ? whoJoined.map((user) => {
-                        return (
-                          <p key={user[0]._id}>
+                      return (
+                        <p key={user[0]._id}>
                             <strong>{user[0].email}</strong>
                           </p>
                         );
@@ -177,7 +179,7 @@ function PlanDetailsPage() {
                     name='postText'
                     value={postText}
                     onChange={(e) => setPostText(e.target.value)}
-                  />
+                    />
                   <button type='submit' className='button-dark'>
                     Submit post
                   </button>
@@ -208,6 +210,9 @@ function PlanDetailsPage() {
       </div>
     </div>
   );
+} else {
+  navigate('/');
+}
 }
 
 export default PlanDetailsPage;
