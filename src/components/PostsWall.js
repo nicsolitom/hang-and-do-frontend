@@ -15,6 +15,7 @@ function PostsWall({ planId }) {
       .then((fetchedPosts) => {
         // const allPosts = fetchedPosts.data;
         const filteredPosts = fetchedPosts.data.filter((post) => {
+          console.log(post);
           return post.planId === planId;
         });
         setPosts(filteredPosts);
@@ -28,10 +29,12 @@ function PostsWall({ planId }) {
 
   return (
     <div className='posts-wall'>
+      <h3>Posts from plan maker:</h3>
       {posts ? (
         posts.map((post) => {
           return (
             <div className='post-card' key={post._id} >
+              <p><strong>{post.updatedAt.slice(0, 10)} | {post.updatedAt.slice(11, 16)}</strong></p>
               <p>{post.postText}</p>
             </div>
           );
