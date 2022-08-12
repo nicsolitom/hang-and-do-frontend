@@ -1,19 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap");
-/* font-family: 'Montserrat', sans-serif; */
-/* font-family: 'Caveat', cursive; */
 
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(0, 160, 165, 0.300);
-  /* background: rgb(2,0,36);
-background: linear-gradient(0deg, rgba(2,0,36,0.492832095709571) 0%, rgba(9,9,121,0.0043832508250825075) 62%, rgba(0,255,205,0.32781559405940597) 100%); */
-}
-
-.App {
-
+  background-color: rgba(0, 159, 165, 0.134);
 }
 
 h3 {
@@ -166,11 +158,17 @@ button {
   align-items: center;
 }
 
-.create-plan-wrapper {
+.create-plan-wrapper,
+.edit-plan-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.create-plan-wrapper > form,
+.edit-plan-wrapper > form {
+  text-align: center;
 }
 
 .home-wrapper > div {
@@ -178,8 +176,7 @@ button {
   margin-bottom: 2em;
 }
 
-.home-wrapper > form,
-.create-plan-wrapper > form {
+.home-wrapper > form {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -280,4 +277,19 @@ button {
 
 .post-form-wrapper > form > label, input {
   display: block;
+}
+
+.join-plan-page {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.join-plan-page > form {
+  text-align: center;
+}
+
+.posts-wall > .post-card {
+  text-align: left;
+  max-width: 80%;
 }
