@@ -103,12 +103,20 @@ function EditPlanPage() {
 
         <label>Image:</label>
         <input
+          type='text'
+          name='imgUrl'
+          value={imgUrl}
+          onChange={(e) => setImgUrl(e.target.value)}
+        />
+
+        {/* <label>Image:</label>
+        <input
           type='file'
           name='imgUrl'
           accept='image/png, image/jpeg, image/jpg'
           value={imgUrl}
           onChange={(e) => setImgUrl(e.target.value)}
-        />
+        /> */}
 
         <label>Location:</label>
         <input
