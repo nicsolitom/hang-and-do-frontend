@@ -35,7 +35,7 @@ function PlanDetailsPage() {
             headers: { Authorization: `Bearer ${storedToken}` },
           })
           .then((response) => {
-            console.log("trying to setUsers: ", response.data);
+            // console.log("trying to setUsers: ", response.data);
             userList = response.data;
             setUsers(response.data);
             const userToDisplay = response.data.filter((user) => {
@@ -47,8 +47,8 @@ function PlanDetailsPage() {
       .then(() => {
         setWhoJoined(() => {
           return responseResult?.joined?.map((joinedUser) => {
-            console.log("response.result", responseResult);
-            console.log("users", userList);
+            // console.log("response.result", responseResult);
+            // console.log("users", userList);
             return userList?.filter((user) => {
               return user._id === joinedUser;
             });
@@ -75,9 +75,11 @@ function PlanDetailsPage() {
       })
       .then((response) => {
         setPostText("");
+        window.location.reload();
       })
       .catch((error) => console.log(error));
   };
+
 
   const joinPlan = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -95,7 +97,7 @@ function PlanDetailsPage() {
         }
       )
       .then(() => {
-        // window.location.reload();
+        window.location.reload();
       })
       .catch((error) => console.log(error));
   };
@@ -154,15 +156,13 @@ function PlanDetailsPage() {
                   <p>Joined plan:</p>
                   {whoJoined
                     ? whoJoined.map((user) => {
-                        console.log("WHO JOINED: ", whoJoined);
-                        console.log("USER: ", user);
                         return (
-                          <p>
+                          <p key={user[0]._id}>
                             <strong>{user[0].email}</strong>
                           </p>
                         );
                       })
-                    : "no one"}
+                    : <p>"no one"</p>}
                 </>
               )}
             </div>
@@ -182,13 +182,14 @@ function PlanDetailsPage() {
                     Submit post
                   </button>
                 </form>
-                <PostsWall user={user} planId={planId} />
+                
               </div>
             ) : (
               <button className='button-dark' onClick={joinPlan}>
                 Join
               </button>
             )}
+            <PostsWall planId={planId} />
 
             {whoCreated === user.email && (
               <>
